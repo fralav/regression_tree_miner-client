@@ -65,12 +65,12 @@ public class Client {
     private static final String FILE_NOT_FOUND = "fileNotFound";
     
     /**
-     * Viene inviato al client quando la tabella selezionata non è presenta nel database.
+     * Viene inviato al client quando la tabella selezionata non Ã¨ presenta nel database.
      */
     private static final String NO_TABLES_FOUND = "NoTablesFound";
     
     /**
-     * Viene inviato al client quando il file selezionato non è presente nell'archivio.
+     * Viene inviato al client quando il file selezionato non Ã¨ presente nell'archivio.
      */
     private static final String NO_FILES_FOUND = "NoFilesFound";
 
@@ -98,7 +98,7 @@ public class Client {
     }
 
     /** Il metodo implementa l'interfaccia grafica a riga di comando la quale rende possibile la comunicazione tra l'utente e il server.
-     * Una volta instaurata la connessione, l'utente può scegliere se avviare un nuovo processo di regression tree o recuperare albero precedentemente
+     * Una volta instaurata la connessione, l'utente puÃ² scegliere se avviare un nuovo processo di regression tree o recuperare albero precedentemente
      * serializzato su file.
      * @param args Indirizzo del server e porta sono acquisiti come parametri tramite args.
      */
@@ -118,7 +118,7 @@ public class Client {
             return;
         }
         
-        // Finché il client è connesso...
+        // FinchÃ© il client Ã¨ connesso...
         do {
         	
             // Decidi db o file
@@ -142,7 +142,7 @@ public class Client {
                         System.out.println(tableList);
                     }
                 } catch (ClassNotFoundException | IOException e) {
-                    System.out.println("[!] Si è verificato un errore durante la connessione al server.");
+                    System.out.println("[!] Si Ã¨ verificato un errore durante la connessione al server.");
                     e.printStackTrace();
                     return;
                 }
@@ -157,14 +157,14 @@ public class Client {
                     if (report.equals(OK)) {
                         System.out.println("Training set appreso con successo.");
                     } else if (report.equals(DATA_ERROR)) {
-                        System.out.println("[!] Si è verificato un errore durante l'elaborazione del training set.");
+                        System.out.println("[!] Si Ã¨ verificato un errore durante l'elaborazione del training set.");
                         return;
                     } else if (report.equals(TABLE_NOT_FOUND)) {
-                        System.out.println("[!] La tabella specificata non è stata trovata.");
+                        System.out.println("[!] La tabella specificata non Ã¨ stata trovata.");
                         continue;
                     }
                 } catch (ClassNotFoundException | IOException e) {
-                    System.out.println("[!] Si è verificato un errore durante la connessione al server.");
+                    System.out.println("[!] Si Ã¨ verificato un errore durante la connessione al server.");
                     e.printStackTrace();
                     return;
                 }
@@ -182,7 +182,7 @@ public class Client {
                         System.out.println(fileList);
                     }
                 } catch (ClassNotFoundException | IOException e) {
-                    System.out.println("[!] Si è verificato un errore durante la connessione al server.");
+                    System.out.println("[!] Si Ã¨ verificato un errore durante la connessione al server.");
                     e.printStackTrace();
                     return;
                 }
@@ -198,11 +198,11 @@ public class Client {
                     if (report.equals(OK)) {
                         System.out.println("Albero acquisito con successo.");
                     } else if (report.equals(FILE_NOT_FOUND)) {
-                        System.out.println("[!] Il file specificato non è stato trovato.");
+                        System.out.println("[!] Il file specificato non Ã¨ stato trovato.");
                         continue;
                     }
                 } catch (ClassNotFoundException | IOException e) {
-                    System.out.println("[!] Si è verificato un errore durante la connessione al server.");
+                    System.out.println("[!] Si Ã¨ verificato un errore durante la connessione al server.");
                     e.printStackTrace();
                     return;
                 }
@@ -220,7 +220,7 @@ public class Client {
                 try {
                     System.out.println(printTree());
                 } catch (ClassNotFoundException | IOException e) {
-                    System.out.println("[!] Si è verificato un errore durante la connessione al server.");
+                    System.out.println("[!] Si Ã¨ verificato un errore durante la connessione al server.");
                     e.printStackTrace();
                     return;
                 }
@@ -229,7 +229,7 @@ public class Client {
                 try {
                     predictTree();
                 } catch (ClassNotFoundException | IOException e) {
-                    System.out.println("[!] Si è verificato un errore durante la connessione al server.");
+                    System.out.println("[!] Si Ã¨ verificato un errore durante la connessione al server.");
                     e.printStackTrace();
                     return;
                 }
@@ -244,8 +244,8 @@ public class Client {
     /**
      * Chiede al server i nomi delle tabelle all'interno del database e riceve dal server stesso i risultati.
      * @return Nomi tabelle presenti nel database.
-     * @throws IOException Può essere sollevata durante un errore di comunicazione con il server.
-     * @throws ClassNotFoundException Può essere sollevata durante la lettura dello stream di input del socket.
+     * @throws IOException PuÃ² essere sollevata durante un errore di comunicazione con il server.
+     * @throws ClassNotFoundException PuÃ² essere sollevata durante la lettura dello stream di input del socket.
      */
     private static LinkedList < String > getTablesFromDb() throws IOException, ClassNotFoundException {
         out.writeObject(TASK_GET_TABLES_FROM_DB);
@@ -255,8 +255,8 @@ public class Client {
     /**
      * Chiede al server i nomi dei file all'interno dell'archivio e riceve dal server stesso i risultati.
      * @return Nomi file presenti nell'archivio.
-     * @throws IOException Può essere sollevata durante un errore di comunicazione con il server.
-     * @throws ClassNotFoundException Può essere sollevata durante la lettura dello stream di input del socket.
+     * @throws IOException PuÃ² essere sollevata durante un errore di comunicazione con il server.
+     * @throws ClassNotFoundException PuÃ² essere sollevata durante la lettura dello stream di input del socket.
      */
     private static LinkedList < String > getFilesFromArchive() throws IOException, ClassNotFoundException {
         out.writeObject(TASK_GET_FILES_FROM_ARCHIVE);
@@ -267,8 +267,8 @@ public class Client {
      * Chiede al server di apprendere l'albero dal training set all'interno della tabella selezionata in input e riceve l'esito.
      * @param table Nome della tabella del database.
      * @return Esito dell'apprendimento del training set.
-     * @throws IOException Può essere sollevata durante un errore di comunicazione con il server.
-     * @throws ClassNotFoundException Può essere sollevata durante la lettura dello stream di input del socket.
+     * @throws IOException PuÃ² essere sollevata durante un errore di comunicazione con il server.
+     * @throws ClassNotFoundException PuÃ² essere sollevata durante la lettura dello stream di input del socket.
      */
     private static String learnTreeFromDb(String table) throws IOException, ClassNotFoundException {
         out.writeObject(TASK_LEARN_TREE_FROM_DB);
@@ -280,8 +280,8 @@ public class Client {
      * Chiede al server di prelevare l'albero serializzato precedentemente su un file dell'archivio e riceve l'esito.
      * @param file Nome del file dell'archivio.
      * @return Esito del prelievo dell'albero da file.
-     * @throws IOException Può essere sollevata durante un errore di comunicazione con il server.
-     * @throws ClassNotFoundException Può essere sollevata durante la lettura dello stream di input del socket.
+     * @throws IOException PuÃ² essere sollevata durante un errore di comunicazione con il server.
+     * @throws ClassNotFoundException PuÃ² essere sollevata durante la lettura dello stream di input del socket.
      */
     private static String getTreeFromFile(String file) throws IOException, ClassNotFoundException {
         out.writeObject(TASK_GET_TREE_FROM_FILE);
@@ -292,8 +292,8 @@ public class Client {
     /**
      * Chiede al server di fornirgli l'albero appreso sottoforma di stringa e riceve l'esito.
      * @return Albero appreso sottoforma di stringa.
-     * @throws IOException Può essere sollevata durante un errore di comunicazione con il server.
-     * @throws ClassNotFoundException Può essere sollevata durante la lettura dello stream di input del socket.
+     * @throws IOException PuÃ² essere sollevata durante un errore di comunicazione con il server.
+     * @throws ClassNotFoundException PuÃ² essere sollevata durante la lettura dello stream di input del socket.
      */
     private static String printTree() throws IOException, ClassNotFoundException {
         out.writeObject(TASK_PRINT_TREE);
@@ -301,11 +301,11 @@ public class Client {
     }
 
     /**
-     * Chiede al server di avviare il procedimento di predizione e, finché il nodo corrente non è un nodo foglia, il server chiede al client di
-     * selezionare lo split corrispondente al nodo foglia da predire. Quando il nodo corrente è un nodo foglia, il server fornisce al client
+     * Chiede al server di avviare il procedimento di predizione e, finchÃ© il nodo corrente non Ã¨ un nodo foglia, il server chiede al client di
+     * selezionare lo split corrispondente al nodo foglia da predire. Quando il nodo corrente Ã¨ un nodo foglia, il server fornisce al client
      * il valore di predizione dell'esempio corrispondente.
-     * @throws IOException Può essere sollevata durante un errore di comunicazione con il server.
-     * @throws ClassNotFoundException Può essere sollevata durante la lettura dello stream di input del socket.
+     * @throws IOException PuÃ² essere sollevata durante un errore di comunicazione con il server.
+     * @throws ClassNotFoundException PuÃ² essere sollevata durante la lettura dello stream di input del socket.
      */
     private static void predictTree() throws IOException, ClassNotFoundException {
         String answer = "";
@@ -319,6 +319,9 @@ public class Client {
             numberChildren = Integer.parseInt( in .readObject().toString());
             do {
                 risp = Keyboard.readInt();
+		if (risp < 0 || risp >= numberChildren) {
+		    System.out.println("Il valore deve essere compreso tra 0 e " + numberChildren + ".");
+		}
             } while (risp < 0 || risp >= numberChildren);
             out.writeObject(risp);
             answer = in .readObject().toString();
